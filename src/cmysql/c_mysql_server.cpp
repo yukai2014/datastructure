@@ -10,8 +10,10 @@
 #include "c_mysql_eof_packet.h"
 
 CMysqlServer::CMysqlServer() {
-	threadpool=new Thread_Pool();
-	threadpool->Thread_Pool_init(2,2);
+//	threadpool=new Thread_Pool();
+//	threadpool->Thread_Pool_init(2,2);
+	threadpool = new ThreadPool();	// -Yu
+	threadpool->Thread_Pool_init(2);
 }
 
 CMysqlServer::~CMysqlServer() {

@@ -143,7 +143,9 @@ int CMysqlCallback::process(easy_request_t* r) {
 	Args *ar=new Args();
 	ar->cserver=server;
 	ar->r=r;
-	server->threadpool->Thread_Pool_add(&(server->do_com_query),ar);
+//	server->threadpool->Thread_Pool_add(&(server->do_com_query),ar);
+	server->threadpool->add_task(&(server->do_com_query),ar);		//	-Yu
+
 	cout<<"put the do_com_query into threadpool! "<<endl;
 	r->ms->c->pool->ref++;
 	easy_atomic_inc(&r->ms->pool->ref);
